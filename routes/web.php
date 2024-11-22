@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BerandaOperatorController;  
@@ -23,6 +24,7 @@ Auth::routes();
 // Khusus Operator
 Route::prefix('operator')->middleware(['auth', 'auth.operator'])->group(function () {
         Route::get('/beranda', [BerandaOperatorController::class, 'index'])->name('operator.beranda');
+        Route::resource('user', UserController::class);
 });
 // Khusus wali
 Route::prefix('wali')->middleware(['auth', 'auth.wali'])->group(function () {
@@ -36,5 +38,5 @@ Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
 // Rute Logout
 Route::get('logout', function () {
     Auth::logout();  
-    return redirect('/');  
+    return redirect('login');  
 });
