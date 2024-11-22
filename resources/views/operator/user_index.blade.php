@@ -16,6 +16,7 @@
                                     <th>No HP</th>
                                     <th>Email</th>
                                     <th>Akses</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -26,6 +27,9 @@
                                         <td>{{ $item->nohp }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->akses }}</td>
+                                        <td>
+                                            <a href="{{ route('user.edit', $item->id) }}">Edit </a>
+                                        </td>
                                     </tr>
                                     @empty
                                     <tr>

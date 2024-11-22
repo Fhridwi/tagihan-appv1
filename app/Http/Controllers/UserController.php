@@ -88,7 +88,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'model'  =>  \App\Models\User::findOrFail($id), 
+            'method' => 'PUT',                 
+            'route'  => ['user.update', $id],           
+            'button' => 'UPDATE'                
+        ];
+    
+        return view('operator.user_form', $data );
     }
 
     /**
